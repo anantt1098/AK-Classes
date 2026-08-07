@@ -1,0 +1,60 @@
+/* eslint-disable react-refresh/only-export-components */
+import { createContext, useCallback, useEffect, useState } from "react";
+import api from "../services/api";
+
+export const AuthContext = createContext();
+
+export const AuthProvider = ({ children }) => {
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    const checkAuth = useCallback(async () => {
+        try {
+            const { data } = await api.get("/auth/me");
+            if (data && data.success && data.user) {
+                setUser(data.user);
+            } else {
+                setUser(null);
+            }
+        } catch (_error) {
+            setUser(null);
+        } finally {
+            setLoading(false);
+        }
+    }, []);
+
+    useEffect(() => {
+        checkAuth();
+    }, [checkAuth]);
+
+    const login = (userData) => {
+        setUser(userData);
+    };
+
+    const logout = async () => {
+        try {
+            await api.post("/auth/logout");
+        } catch (error) {
+            console.error(
+                "Logout failed:",
+                error
+            );
+        } finally {
+            setUser(null);
+        }
+    };
+
+    return (
+        <AuthContext.Provider
+            value={{
+                user,
+                loading,
+                login,
+                logout,
+                checkAuth,
+            }}
+        >
+            {children}
+        </AuthContext.Provider>
+    );
+};
