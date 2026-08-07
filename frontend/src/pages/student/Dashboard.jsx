@@ -11,6 +11,8 @@ import {
     FaMoneyBillWave,
     FaPlayCircle,
     FaClipboardList,
+    FaBroadcastTower,
+    FaFileAlt,
 } from "react-icons/fa";
 
 
@@ -261,137 +263,62 @@ function Dashboard(){
 
 
 
-            <div
-                className="
-                grid
-                gap-6
-                md:grid-cols-2
-                xl:grid-cols-5
-                "
-            >
-
-
-
-
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-7">
+                <StatCard
+                    title="Live Classes"
+                    value={loading ? "..." : dashboard?.liveClasses?.length || 0}
+                    icon={FaBroadcastTower}
+                    color="bg-red-600"
+                    path="/student/live-classes"
+                    isLive={true}
+                />
 
                 <StatCard
-
                     title="Courses"
-
-                    value={
-                        loading
-                        ?
-                        "..."
-                        :
-                        dashboard?.courses?.length || 0
-                    }
-
+                    value={loading ? "..." : dashboard?.courses?.length || 0}
                     icon={FaBook}
-
                     color="bg-blue-500"
-
+                    path="/student/courses"
                 />
 
-
-
-
-
-
-
                 <StatCard
-
-                    title="Attendance"
-
-                    value={
-                        loading
-                        ?
-                        "..."
-                        :
-                        `${attendancePercentage}%`
-                    }
-
-                    icon={FaClipboardCheck}
-
-                    color="bg-green-500"
-
-                />
-
-
-
-
-
-
-
-                <StatCard
-
-                    title="Pending Fees"
-
-                    value={
-                        loading
-                        ?
-                        "..."
-                        :
-                        `₹${dashboard?.fees?.dueFee || 0}`
-                    }
-
-                    icon={FaMoneyBillWave}
-
-                    color="bg-red-500"
-
-                />
-
-
-
-
-
-
-
-                <StatCard
-
                     title="Videos"
-
-                    value={
-                        loading
-                        ?
-                        "..."
-                        :
-                        dashboard?.videos?.length || 0
-                    }
-
+                    value={loading ? "..." : dashboard?.videos?.length || 0}
                     icon={FaPlayCircle}
-
                     color="bg-purple-500"
-
+                    path="/student/videos"
                 />
-
-
-
-
-
-
 
                 <StatCard
-
-                    title="Tests"
-
-                    value={
-                        loading
-                        ?
-                        "..."
-                        :
-                        dashboard?.tests?.length || 0
-                    }
-
-                    icon={FaClipboardList}
-
-                    color="bg-orange-500"
-
+                    title="Notes"
+                    value={loading ? "..." : dashboard?.notes?.length || 0}
+                    icon={FaFileAlt}
+                    color="bg-sky-500"
+                    path="/student/notes"
                 />
 
+                <StatCard
+                    title="Attendance"
+                    value={loading ? "..." : `${attendancePercentage}%`}
+                    icon={FaClipboardCheck}
+                    color="bg-green-500"
+                    path="/student/attendance"
+                />
 
+                <StatCard
+                    title="Pending Fees"
+                    value={loading ? "..." : `₹${dashboard?.fees?.dueFee || 0}`}
+                    icon={FaMoneyBillWave}
+                    color="bg-red-500"
+                    path="/student/fees"
+                />
 
-
-
+                <StatCard
+                    title="Tests"
+                    value={loading ? "..." : dashboard?.tests?.length || 0}
+                    icon={FaClipboardList}
+                    color="bg-orange-500"
+                />
             </div>
 
 

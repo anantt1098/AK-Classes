@@ -5,49 +5,73 @@ import {
     FaFileAlt,
     FaVideo,
     FaBookOpen,
+    FaBroadcastTower,
+    FaTasks,
 } from "react-icons/fa";
 
 export const teacherDashboardCards = [
+    {
+        key: "totalLiveClasses",
+        title: "Live Classes",
+        icon: FaBroadcastTower,
+        color: "bg-red-600",
+        path: "/teacher/live-classes",
+        isLive: true,
+    },
     {
         key: "students",
         title: "Total Students",
         icon: FaUserGraduate,
         color: "bg-blue-500",
+        path: "/teacher/students",
     },
     {
         key: "totalVideos",
         title: "Uploaded Videos",
         icon: FaVideo,
         color: "bg-indigo-500",
+        path: "/teacher/videos",
     },
     {
         key: "totalCourses",
         title: "Uploaded Courses",
         icon: FaBookOpen,
         color: "bg-amber-500",
+        path: "/teacher/courses",
     },
     {
         key: "totalNotes",
         title: "Uploaded Notes",
         icon: FaFileAlt,
         color: "bg-sky-500",
+        path: "/teacher/notes",
+    },
+    {
+        key: "totalAssignments",
+        title: "Assignments",
+        icon: FaTasks,
+        color: "bg-teal-500",
+        path: "/teacher/assignments",
     },
     {
         key: "attendance",
         title: "Avg Attendance %",
         icon: FaClipboardCheck,
         color: "bg-emerald-500",
+        path: "/teacher/attendance",
     },
     {
         key: "pendingFees",
         title: "Pending Fees",
         icon: FaMoneyBillWave,
         color: "bg-rose-500",
+        path: "/teacher/fees",
     },
     {
         key: "reports",
         title: "Reports",
         icon: FaFileAlt,
         color: "bg-purple-500",
+        path: "/teacher/reports",
     },
 ];

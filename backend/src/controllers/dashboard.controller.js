@@ -11,6 +11,7 @@ const Assignment = require("../models/assignment.model");
 const Notice = require("../models/notice.model");
 const Timetable = require("../models/timetable.model");
 const Attendance = require("../models/attendance.model");
+const LiveClass = require("../models/liveClass.model");
 
 
 
@@ -37,6 +38,8 @@ async function getTeacherDashboard(req, res) {
         const totalNotes = await Note.countDocuments();
         const totalCourses = await Course.countDocuments();
         const totalAssignments = await Assignment.countDocuments();
+        const totalLiveClasses = await LiveClass.countDocuments();
+        const liveNowClasses = await LiveClass.countDocuments({ status: "Live" });
 
         const recentStudents = await Student.find()
             .populate("user", "username email")
@@ -125,6 +128,8 @@ async function getTeacherDashboard(req, res) {
                 totalNotes,
                 totalCourses,
                 totalAssignments,
+                totalLiveClasses,
+                liveNowClasses,
             },
 
             attendanceChart,
@@ -216,18 +221,38 @@ async function getStudentDashboard(req,res){
             ];
         }
 
+        const liveClassFilter = {
+            studentClass: { $in: [student.studentClass, "All"] },
+        };
+
+        if (student.subjects && student.subjects.length > 0) {
+            liveClassFilter.subject = {
+                $in: student.subjects,
+            };
+        }
+
+        if (student.stream) {
+            liveClassFilter.$or = [
+                { stream: student.stream },
+                { stream: "" },
+                { stream: { $exists: false } },
+            ];
+        }
+
         const [
             courses,
             notes,
             videos,
             assignments,
             tests,
+            liveClasses,
         ] = await Promise.all([
             Course.find(academicFilter),
             Note.find(academicFilter),
             Video.find(academicFilter),
             Assignment.find(academicFilter),
             Test.find(academicFilter),
+            LiveClass.find(liveClassFilter),
         ]);
 
         const noticeOrConditions = [
@@ -346,29 +371,20 @@ async function getStudentDashboard(req,res){
                 tests:
                 tests.length,
 
-
+                liveClasses:
+                liveClasses.length,
             },
 
-
-
             courses,
-
             notes,
-
             videos,
-
             assignments,
-
             tests,
-
+            liveClasses,
             notices,
-
             timetable,
-
             attendance,
-
             fees,
-
             reports,
 
 

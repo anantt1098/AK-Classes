@@ -268,19 +268,17 @@ function Dashboard(){
                         2xl:grid-cols-7
                     "
                 >
-                    {
-                    teacherDashboardCards.map(card=>(
+                    {teacherDashboardCards.map((card) => (
                         <StatCard
                             key={card.key}
                             title={card.title}
-                            value={
-                                statistics[card.key] ?? 0
-                            }
+                            value={statistics[card.key] ?? 0}
                             icon={card.icon}
                             color={card.color}
+                            path={card.path}
+                            isLive={card.isLive}
                         />
-                    ))
-                    }
+                    ))}
                 </div>
             </section>
 

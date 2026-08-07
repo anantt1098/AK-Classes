@@ -14,6 +14,7 @@ import {
     FaTasks,
     FaBullhorn,
     FaStickyNote,
+    FaBroadcastTower,
 } from "react-icons/fa";
 
 
@@ -28,26 +29,12 @@ import {
     AnimatePresence,
 } from "framer-motion";
 
-
 import { useAuth } from "../../hooks/useAuth";
 
-
-
-
-function Drawer({
-    open,
-    closeDrawer,
-    userRole,
-}) {
-
-
-    const { logout } = useAuth();
-
+function Drawer({ open, closeDrawer }) {
     const navigate = useNavigate();
-
-
-
-
+    const { user, logout } = useAuth();
+    const userRole = user?.role;
 
     const studentLinks = [
 
@@ -61,6 +48,12 @@ function Drawer({
             name:"Courses",
             icon:FaBook,
             path:"/student/courses",
+        },
+
+        {
+            name:"Live Classes",
+            icon:FaBroadcastTower,
+            path:"/student/live-classes",
         },
 
         {
@@ -166,6 +159,12 @@ function Drawer({
             name:"Videos",
             icon:FaVideo,
             path:"/teacher/videos",
+        },
+
+        {
+            name:"Live Classes",
+            icon:FaBroadcastTower,
+            path:"/teacher/live-classes",
         },
 
         {

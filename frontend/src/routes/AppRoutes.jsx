@@ -64,30 +64,21 @@ import AssignmentForm from "../pages/teacher/AssignmentForm";
 import TeacherCourses from "../pages/teacher/Courses";
 import TeacherVideos from "../pages/teacher/Videos";
 import TeacherNotes from "../pages/teacher/Notes";
-
-
-
-
+import TeacherLiveClasses from "../pages/teacher/LiveClasses";
 
 // ============================
 // Student Pages
 // ============================
 
 import StudentDashboard from "../pages/student/Dashboard";
-
 import Profile from "../pages/student/Profile";
-
 import Attendance from "../pages/student/Attendance";
-
 import Fees from "../pages/student/Fees";
-
 import Reports from "../pages/student/Reports";
-
 import Notes from "../pages/student/Notes";
-
 import Videos from "../pages/student/Videos";
-
 import Courses from "../pages/student/Courses";
+import StudentLiveClasses from "../pages/student/LiveClasses";
 
 
 
@@ -405,103 +396,72 @@ function AppRoutes() {
 
 
                 {/* Notes */}
-
-
                 <Route
                     path="/teacher/notes"
                     element={<TeacherNotes />}
                 />
 
-
-
-
+                {/* Live Classes */}
+                <Route
+                    path="/teacher/live-classes"
+                    element={<TeacherLiveClasses />}
+                />
             </Route>
-
-
-
-
-
-
-
-
 
             {/* ============================
                 Student Routes
             ============================ */}
 
-
-
             <Route
-
                 element={
-
                     <ProtectedRoute
-
                         allowedRoles={[
                             "student",
                         ]}
-
                     >
-
                         <MainLayout />
-
                     </ProtectedRoute>
-
                 }
-
             >
-
-
-
-
                 <Route
                     path="/student/dashboard"
                     element={<StudentDashboard />}
                 />
-
-
 
                 <Route
                     path="/student/profile"
                     element={<Profile />}
                 />
 
-
-
                 <Route
                     path="/student/attendance"
                     element={<Attendance />}
                 />
-
-
 
                 <Route
                     path="/student/fees"
                     element={<Fees />}
                 />
 
-
-
                 <Route
                     path="/student/reports"
                     element={<Reports />}
                 />
-
-
 
                 <Route
                     path="/student/notes"
                     element={<Notes />}
                 />
 
-
-
                 <Route
                     path="/student/videos"
                     element={<Videos />}
                 />
 
-
+                <Route
+                    path="/student/live-classes"
+                    element={<StudentLiveClasses />}
+                />
 
                 <Route
                     path="/student/courses"

@@ -15,6 +15,7 @@ const dashboardRoutes = require("./routes/dashboard.routes");
 const noticeRoutes = require("./routes/notice.routes");
 const timetableRoutes = require("./routes/timetable.routes");
 const assignmentRoutes = require("./routes/assignment.routes");
+const liveClassRoutes = require("./routes/liveClass.routes");
 
 const app = express();
 
@@ -69,6 +70,7 @@ app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/notices", noticeRoutes);
 app.use("/api/timetables", timetableRoutes);
 app.use("/api/assignments", assignmentRoutes);
+app.use("/api/live-classes", liveClassRoutes);
 
 // ==========================================
 // Health Check
