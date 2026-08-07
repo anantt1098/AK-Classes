@@ -54,7 +54,7 @@ function Login() {
                 role,
             });
 
-            login(data.user);
+            login(data.user, data.token);
 
             toast.success("Login Successful");
 
@@ -125,42 +125,25 @@ function Login() {
                     <div className="mb-6 grid grid-cols-2 gap-4">
                         <button
                             type="button"
-                            onClick={() =>
-                                setRole("student")
-                            }
-                            className={`
-                                rounded-xl
-                                border-2
-                                p-4
-                                transition
-                                ${
-                                    role === "student"
-                                        ? "border-blue-600 bg-blue-50 dark:bg-slate-800"
-                                        : "border-slate-200 dark:border-slate-700"
-                                }
-                            `}
+                            onClick={() => setRole("student")}
+                            className={`rounded-xl border-2 p-4 font-bold transition-all duration-200 ${
+                                role === "student"
+                                    ? "border-blue-600 bg-blue-600 text-white shadow-lg shadow-blue-500/25"
+                                    : "border-slate-200 text-slate-700 hover:border-blue-500 dark:border-slate-700 dark:text-slate-200"
+                            }`}
                         >
                             <FaGraduationCap className="mx-auto mb-2 text-2xl" />
-
                             Student
                         </button>
 
                         <button
                             type="button"
-                            onClick={() =>
-                                setRole("teacher")
-                            }
-                            className={`
-                                rounded-xl
-                                border-2
-                                p-4
-                                transition
-                                ${
-                                    role === "teacher"
-                                        ? "border-blue-600 bg-blue-50 dark:bg-slate-800"
-                                        : "border-slate-200 dark:border-slate-700"
-                                }
-                            `}
+                            onClick={() => setRole("teacher")}
+                            className={`rounded-xl border-2 p-4 font-bold transition-all duration-200 ${
+                                role === "teacher"
+                                    ? "border-blue-600 bg-blue-600 text-white shadow-lg shadow-blue-500/25"
+                                    : "border-slate-200 text-slate-700 hover:border-blue-500 dark:border-slate-700 dark:text-slate-200"
+                            }`}
                         >
                             <FaUserTie className="mx-auto mb-2 text-2xl" />
 

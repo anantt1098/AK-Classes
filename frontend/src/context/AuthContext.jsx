@@ -27,7 +27,10 @@ export const AuthProvider = ({ children }) => {
         checkAuth();
     }, [checkAuth]);
 
-    const login = (userData) => {
+    const login = (userData, token) => {
+        if (token) {
+            localStorage.setItem("token", token);
+        }
         setUser(userData);
     };
 
@@ -35,11 +38,9 @@ export const AuthProvider = ({ children }) => {
         try {
             await api.post("/auth/logout");
         } catch (error) {
-            console.error(
-                "Logout failed:",
-                error
-            );
+            console.error("Logout failed:", error);
         } finally {
+            localStorage.removeItem("token");
             setUser(null);
         }
     };

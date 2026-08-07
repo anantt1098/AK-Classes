@@ -12,7 +12,6 @@ const generateToken = require("../utils/generateToken");
 // ==========================================
 const sendToken = (res, user) => {
     const token = generateToken(user);
-
     const isProduction = process.env.NODE_ENV === "production";
 
     res.cookie("token", token, {
@@ -21,6 +20,8 @@ const sendToken = (res, user) => {
         sameSite: isProduction ? "none" : "lax",
         maxAge: 7 * 24 * 60 * 60 * 1000,
     });
+
+    return token;
 };
 
 
@@ -247,29 +248,16 @@ async function studentRegister(req,res){
 
 
 
-        sendToken(
+        const token = sendToken(
             res,
             tokenUser
         );
 
-
-
-
-
-
         return res.status(201).json({
-
-            success:true,
-
-
-            message:
-            "Student registered successfully",
-
-
-
-            user:tokenUser
-
-
+            success: true,
+            message: "Student registered successfully",
+            user: tokenUser,
+            token,
         });
 
 
@@ -449,35 +437,21 @@ async function teacherRegister(req,res){
 
 
 
-        sendToken(
+        const token = sendToken(
             res,
             user
         );
 
-
-
-
-
         return res.status(201).json({
-
-            success:true,
-
-            message:
-            "Teacher registered successfully",
-
-
-            user:{
-
-                id:user._id,
-
-                username:user.username,
-
-                email:user.email,
-
-                role:user.role
-
-            }
-
+            success: true,
+            message: "Teacher registered successfully",
+            user: {
+                id: user._id,
+                username: user.username,
+                email: user.email,
+                role: user.role,
+            },
+            token,
         });
 
 
@@ -648,30 +622,16 @@ async function studentLogin(req,res){
 
 
 
-        sendToken(
-
+        const token = sendToken(
             res,
-
             tokenUser
-
         );
 
-
-
-
-
-
         return res.status(200).json({
-
-            success:true,
-
-            message:
-            "Student login successful",
-
-
-            user:tokenUser
-
-
+            success: true,
+            message: "Student login successful",
+            user: tokenUser,
+            token,
         });
 
 
@@ -776,39 +736,21 @@ async function teacherLogin(req,res){
 
 
 
-        sendToken(
-
+        const token = sendToken(
             res,
-
             user
-
         );
 
-
-
-
-
-
         return res.status(200).json({
-
-            success:true,
-
-            message:
-            "Teacher login successful",
-
-
-            user:{
-
-                id:user._id,
-
-                username:user.username,
-
-                email:user.email,
-
-                role:user.role
-
-            }
-
+            success: true,
+            message: "Teacher login successful",
+            user: {
+                id: user._id,
+                username: user.username,
+                email: user.email,
+                role: user.role,
+            },
+            token,
         });
 
 
