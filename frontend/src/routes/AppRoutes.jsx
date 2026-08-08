@@ -6,6 +6,9 @@ import {
 
 
 import ProtectedRoute from "./ProtectedRoute";
+import PublicRoute from "./PublicRoute";
+import Loader from "../components/common/Loader";
+import { useAuth } from "../hooks/useAuth";
 
 import MainLayout from "../layouts/MainLayout";
 
@@ -84,29 +87,52 @@ import StudentLiveClasses from "../pages/student/LiveClasses";
 
 
 
-function AppRoutes() {
+function RoleDashboardRedirect() {
+    const { user, loading } = useAuth();
 
+    if (loading) {
+        return <Loader />;
+    }
+
+    if (!user) {
+        return <Navigate to="/login" replace />;
+    }
 
     return (
+        <Navigate
+            to={
+                user.role === "teacher"
+                    ? "/teacher/dashboard"
+                    : "/student/dashboard"
+            }
+            replace
+        />
+    );
+}
 
+function AppRoutes() {
+    return (
         <Routes>
-
-
-
             {/* ============================
                 Public Routes
             ============================ */}
 
-
             <Route
                 path="/login"
-                element={<Login />}
+                element={
+                    <PublicRoute>
+                        <Login />
+                    </PublicRoute>
+                }
             />
-
 
             <Route
                 path="/register"
-                element={<Register />}
+                element={
+                    <PublicRoute>
+                        <Register />
+                    </PublicRoute>
+                }
             />
 
 
@@ -481,48 +507,26 @@ function AppRoutes() {
 
 
             {/* ============================
-                Default Redirect
+                Dashboard & Default Redirects
             ============================ */}
 
-
             <Route
-
-                path="/"
-
-                element={
-
-                    <Navigate
-                        to="/login"
-                        replace
-                    />
-
-                }
-
+                path="/dashboard"
+                element={<RoleDashboardRedirect />}
             />
 
-
-
-
-
+            <Route
+                path="/"
+                element={<RoleDashboardRedirect />}
+            />
 
             {/* ============================
-                404
+                404 / Fallback
             ============================ */}
 
-
             <Route
-
                 path="*"
-
-                element={
-
-                    <Navigate
-                        to="/login"
-                        replace
-                    />
-
-                }
-
+                element={<RoleDashboardRedirect />}
             />
 
 

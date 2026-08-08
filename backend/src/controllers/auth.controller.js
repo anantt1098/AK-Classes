@@ -1,4 +1,5 @@
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const User = require("../models/user.model");
 const Student = require("../models/student.model");
@@ -818,7 +819,16 @@ function logoutUser(req,res){
 // ==========================================
 async function getCurrentUser(req, res) {
     try {
-        const token = req.cookies.token;
+        let token = req.cookies?.token;
+
+        if (!token && req.headers.authorization && req.headers.authorization.startsWith("Bearer ")) {
+            token = req.headers.authorization.split(" ")[1];
+        }
+
+        if (!token && req.headers["x-access-token"]) {
+            token = req.headers["x-access-token"];
+        }
+
         if (!token) {
             return res.status(200).json({
                 success: false,

@@ -72,18 +72,37 @@ app.use("/api/timetables", timetableRoutes);
 app.use("/api/assignments", assignmentRoutes);
 app.use("/api/live-classes", liveClassRoutes);
 
+const fs = require("fs");
+const path = require("path");
+
 // ==========================================
 // Health Check
 // ==========================================
-app.get("/", (req, res) => {
+app.get("/api/health", (req, res) => {
     res.status(200).json({
         success: true,
         message: "Coaching Management API Running 🚀",
     });
 });
 
+const distPath = path.join(__dirname, "../../frontend/dist");
+if (fs.existsSync(distPath)) {
+    app.use(express.static(distPath));
+    app.get("*", (req, res, next) => {
+        if (req.path.startsWith("/api")) return next();
+        res.sendFile(path.join(distPath, "index.html"));
+    });
+} else {
+    app.get("/", (req, res) => {
+        res.status(200).json({
+            success: true,
+            message: "Coaching Management API Running 🚀",
+        });
+    });
+}
+
 // ==========================================
-// 404 Handler
+// 404 Handler for API
 // ==========================================
 app.use((req, res) => {
     res.status(404).json({
