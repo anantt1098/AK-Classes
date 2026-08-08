@@ -9,14 +9,23 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     const checkAuth = useCallback(async () => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            setUser(null);
+            setLoading(false);
+            return;
+        }
+
         try {
             const { data } = await api.get("/auth/me");
             if (data && data.success && data.user) {
                 setUser(data.user);
             } else {
+                localStorage.removeItem("token");
                 setUser(null);
             }
         } catch (_error) {
+            localStorage.removeItem("token");
             setUser(null);
         } finally {
             setLoading(false);
