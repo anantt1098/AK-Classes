@@ -144,11 +144,10 @@ function Navbar({
                         to={user?.role === "teacher" ? "/teacher/dashboard" : "/student/dashboard"}
 
                         className="
-                            hidden
+                            flex
                             items-center
                             gap-2
 
-                            md:flex
                             hover:opacity-90
                             transition-opacity
                             cursor-pointer
@@ -208,7 +207,7 @@ function Navbar({
 
                     {/* Dashboard title */}
 
-                    <div className="min-w-0">
+                    <div className="hidden md:block min-w-0">
 
 
                         <h1
