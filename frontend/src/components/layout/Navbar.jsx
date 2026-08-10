@@ -6,6 +6,7 @@ import {
 } from "react-icons/fa";
 
 
+import { Link } from "react-router-dom";
 import logo from "../../assets/logo.jpg";
 
 
@@ -138,7 +139,9 @@ function Navbar({
 
                     {/* Logo */}
 
-                    <div
+                    <Link
+
+                        to={user?.role === "teacher" ? "/teacher/dashboard" : "/student/dashboard"}
 
                         className="
                             hidden
@@ -146,6 +149,9 @@ function Navbar({
                             gap-2
 
                             md:flex
+                            hover:opacity-90
+                            transition-opacity
+                            cursor-pointer
                         "
 
                     >
@@ -154,7 +160,7 @@ function Navbar({
 
                             src={logo}
 
-                            alt="AK Classes"
+                            alt="A.K. Classes"
 
                             className="
                                 h-10
@@ -184,12 +190,12 @@ function Navbar({
 
                         >
 
-                            AK Classes
+                            A.K. Classes
 
                         </span>
 
 
-                    </div>
+                    </Link>
 
 
 

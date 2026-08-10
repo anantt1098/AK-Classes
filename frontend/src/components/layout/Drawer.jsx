@@ -20,6 +20,7 @@ import {
 
 import {
     NavLink,
+    Link,
     useNavigate,
 } from "react-router-dom";
 
@@ -422,20 +423,26 @@ function Drawer({ open, closeDrawer }) {
                     <div>
 
 
-                        <h1
-
-                            className="
-                                text-2xl
-                                font-bold
-                                text-blue-600
-                            "
-
+                        <Link
+                            to={userRole === "teacher" ? "/teacher/dashboard" : "/student/dashboard"}
+                            onClick={closeDrawer}
+                            className="block hover:opacity-80 transition-opacity cursor-pointer"
                         >
+                            <h1
 
-                            AK Classes
+                                className="
+                                    text-2xl
+                                    font-bold
+                                    text-blue-600
+                                "
+
+                            >
+
+                                A.K. Classes
 
 
-                        </h1>
+                            </h1>
+                        </Link>
 
 
 

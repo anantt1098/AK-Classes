@@ -107,12 +107,12 @@ function Login() {
                     <div className="mb-8 text-center">
                         <img
                             src={logo}
-                            alt="AK Classes"
+                            alt="A.K. Classes"
                             className="mx-auto mb-4 h-20 w-20 rounded-full object-cover shadow-md ring-4 ring-blue-500/20"
                         />
 
                         <h1 className="text-3xl font-bold">
-                            AK Classes
+                            A.K. Classes
                         </h1>
 
                         <p className="mt-2 text-slate-500">

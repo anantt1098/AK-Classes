@@ -706,7 +706,7 @@ function Register(){
 
                         <img
                             src={logo}
-                            alt="AK Classes"
+                            alt="A.K. Classes"
                             className="mx-auto mb-4 h-20 w-20 rounded-full object-cover shadow-md ring-4 ring-blue-500/20"
                         />
 
