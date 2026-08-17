@@ -26,6 +26,9 @@ const allowedOrigins = [
     process.env.CLIENT_URL,
     "http://localhost:5173",
     "http://localhost:3000",
+    "http://localhost",
+    "https://localhost",
+    "capacitor://localhost",
 ].filter(Boolean);
 
 
@@ -37,7 +40,12 @@ app.use(
                 return callback(null, true);
             }
 
-            if (allowedOrigins.includes(origin)) {
+            if (
+                allowedOrigins.includes(origin) ||
+                origin.startsWith("http://localhost") ||
+                origin.startsWith("https://localhost") ||
+                origin.startsWith("capacitor://")
+            ) {
                 return callback(null, true);
             }
 
