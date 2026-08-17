@@ -3,10 +3,13 @@ import {
     FaMoon,
     FaSun,
     FaUserCircle,
+    FaAndroid,
+    FaDownload,
 } from "react-icons/fa";
 
 
 import { Link } from "react-router-dom";
+import { Capacitor } from "@capacitor/core";
 import logo from "../../assets/logo.jpg";
 
 
@@ -287,6 +290,38 @@ function Navbar({
 
 
 
+
+                    {/* Download App Button (Only on web browser, hidden in mobile APK) */}
+                    {!Capacitor.isNativePlatform() && (
+                        <a
+                            href="/AK_Classes.apk"
+                            download="AK_Classes.apk"
+                            title="Download Android APK"
+                            className="
+                                flex
+                                h-11
+                                items-center
+                                gap-2
+                                rounded-xl
+                                bg-gradient-to-r
+                                from-emerald-500
+                                to-teal-600
+                                px-3
+                                text-xs
+                                font-bold
+                                text-white
+                                shadow-md
+                                transition-all
+                                hover:scale-105
+                                hover:shadow-emerald-500/25
+                                sm:px-4
+                                sm:text-sm
+                            "
+                        >
+                            <FaAndroid className="text-lg" />
+                            <span className="hidden sm:inline">Download App</span>
+                        </a>
+                    )}
 
                     {/* Theme Button */}
 

@@ -6,8 +6,10 @@ import {
     FaGraduationCap,
     FaLock,
     FaUserTie,
+    FaAndroid,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { Capacitor } from "@capacitor/core";
 import toast from "react-hot-toast";
 import logo from "../../assets/logo.jpg";
 
@@ -192,6 +194,34 @@ function Login() {
                         </Link>
                     </p>
                 </Card>
+
+                {!Capacitor.isNativePlatform() && (
+                    <div className="mt-6 text-center">
+                        <a
+                            href="/AK_Classes.apk"
+                            download="AK_Classes.apk"
+                            className="
+                                inline-flex
+                                items-center
+                                gap-2
+                                rounded-xl
+                                bg-emerald-600
+                                px-4
+                                py-2.5
+                                text-sm
+                                font-semibold
+                                text-white
+                                shadow-md
+                                transition-all
+                                hover:bg-emerald-700
+                                hover:scale-105
+                            "
+                        >
+                            <FaAndroid className="text-lg" />
+                            Download Android App
+                        </a>
+                    </div>
+                )}
             </motion.div>
         </div>
     );
