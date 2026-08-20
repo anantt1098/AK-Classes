@@ -346,9 +346,7 @@ const getMyProfile = async(req,res)=>{
         const student =
         await Student.findOne({
 
-            user:req.user.id,
-
-            isActive:true
+            user:req.user.id
 
         })
 
@@ -718,9 +716,7 @@ const getStudentDashboard = async(req,res)=>{
         const student =
         await Student.findOne({
 
-            user:req.user.id,
-
-            isActive:true
+            user:req.user.id
 
         });
 

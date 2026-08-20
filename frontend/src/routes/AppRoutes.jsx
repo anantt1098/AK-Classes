@@ -82,6 +82,8 @@ import Notes from "../pages/student/Notes";
 import Videos from "../pages/student/Videos";
 import Courses from "../pages/student/Courses";
 import StudentLiveClasses from "../pages/student/LiveClasses";
+import StudentAssignments from "../pages/student/Assignments";
+import StudentTimetables from "../pages/student/Timetables";
 
 
 
@@ -492,6 +494,21 @@ function AppRoutes() {
                 <Route
                     path="/student/courses"
                     element={<Courses />}
+                />
+
+                <Route
+                    path="/student/assignments"
+                    element={<StudentAssignments />}
+                />
+
+                <Route
+                    path="/student/timetables"
+                    element={<StudentTimetables />}
+                />
+
+                <Route
+                    path="/student/timetable"
+                    element={<StudentTimetables />}
                 />
 
 

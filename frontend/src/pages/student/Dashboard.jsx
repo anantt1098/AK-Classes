@@ -13,6 +13,8 @@ import {
     FaClipboardList,
     FaBroadcastTower,
     FaFileAlt,
+    FaTasks,
+    FaCalendarAlt,
 } from "react-icons/fa";
 
 
@@ -263,7 +265,7 @@ function Dashboard(){
 
 
 
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-7">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-8">
                 <StatCard
                     title="Live Classes"
                     value={loading ? "..." : dashboard?.liveClasses?.length || 0}
@@ -279,6 +281,22 @@ function Dashboard(){
                     icon={FaBook}
                     color="bg-blue-500"
                     path="/student/courses"
+                />
+
+                <StatCard
+                    title="Assignments"
+                    value={loading ? "..." : dashboard?.assignments?.length || "View"}
+                    icon={FaTasks}
+                    color="bg-emerald-500"
+                    path="/student/assignments"
+                />
+
+                <StatCard
+                    title="Timetable"
+                    value="View"
+                    icon={FaCalendarAlt}
+                    color="bg-indigo-500"
+                    path="/student/timetables"
                 />
 
                 <StatCard
@@ -312,13 +330,6 @@ function Dashboard(){
                     color="bg-red-500"
                     path="/student/fees"
                 />
-
-                <StatCard
-                    title="Tests"
-                    value={loading ? "..." : dashboard?.tests?.length || 0}
-                    icon={FaClipboardList}
-                    color="bg-orange-500"
-                />
             </div>
 
 
@@ -337,11 +348,7 @@ function Dashboard(){
             />
 
 
-
-
-
-
-
+            <AssignmentsTab />
 
 
             <TestsTab

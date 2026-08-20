@@ -397,8 +397,9 @@ const getStudentAssignments = async (req, res) => {
 
         const filter = {
 
-            studentClass:
-            student.studentClass,
+            studentClass: {
+                $in: [student.studentClass, "All"],
+            },
 
             isActive:true,
 
@@ -412,12 +413,15 @@ const getStudentAssignments = async (req, res) => {
 
 
 
-        // For class 11-12
+        // For class 11-12 or stream specific
 
-        if(student.stream){
+        if (student.stream) {
 
-            filter.stream =
-            student.stream;
+            filter.$or = [
+                { stream: student.stream },
+                { stream: "" },
+                { stream: { $exists: false } },
+            ];
 
         }
 

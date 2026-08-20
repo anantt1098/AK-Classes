@@ -712,7 +712,7 @@ const getStudentTimetables = async (req, res) => {
         }
 
         const filter = {
-            studentClass: student.studentClass,
+            studentClass: { $in: [student.studentClass, "All"] },
         };
 
         if (student.subjects && student.subjects.length > 0) {
@@ -722,7 +722,11 @@ const getStudentTimetables = async (req, res) => {
         }
 
         if (student.stream) {
-            filter.stream = student.stream;
+            filter.$or = [
+                { stream: student.stream },
+                { stream: "" },
+                { stream: { $exists: false } },
+            ];
         }
 
         const timetables = await Timetable.find(filter)

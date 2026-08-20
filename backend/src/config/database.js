@@ -12,6 +12,13 @@ const connectDB = async () => {
 
         console.log("DB connected successfully 🍃");
 
+        try {
+            const Attendance = require("../models/attendance.model");
+            await Attendance.syncIndexes();
+        } catch (indexErr) {
+            console.error("Warning syncing Attendance indexes:", indexErr.message);
+        }
+
     } 
     catch (error) {
 

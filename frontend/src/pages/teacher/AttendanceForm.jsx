@@ -599,7 +599,14 @@ function AttendanceForm(){
                     className="
                         rounded-xl
                         border
+                        border-slate-300
                         p-3
+                        text-slate-900
+                        dark:border-slate-700
+                        dark:bg-slate-900
+                        dark:text-white
+                        [color-scheme:light]
+                        dark:[color-scheme:dark]
                     "
 
                 />
@@ -690,26 +697,28 @@ function AttendanceForm(){
                 overflow-x-auto
                 rounded-xl
                 border
+                border-slate-200
+                dark:border-slate-800
             ">
 
 
                 <table className="w-full">
 
 
-                    <thead className="bg-slate-50">
+                    <thead className="border-b border-slate-200 bg-slate-50 text-slate-700 dark:border-slate-800 dark:bg-slate-800/80 dark:text-slate-200">
 
 
                         <tr>
 
 
-                            <th className="p-4 text-left">
+                            <th className="p-4 text-left font-semibold">
 
                                 Student
 
                             </th>
 
 
-                            <th className="p-4">
+                            <th className="p-4 text-center font-semibold">
 
                                 Status
 
@@ -759,12 +768,12 @@ function AttendanceForm(){
 
                             key={student._id}
 
-                            className="border-t"
+                            className="border-t border-slate-200 dark:border-slate-800/80"
 
                         >
 
 
-                            <td className="p-4 font-medium">
+                            <td className="p-4 font-medium text-slate-900 dark:text-white">
 
                                 {student.fullName}
 
@@ -777,7 +786,7 @@ function AttendanceForm(){
                             <td className="p-4">
 
 
-                                <div className="flex gap-3">
+                                <div className="flex justify-center gap-3">
 
 
                                     <button
@@ -799,11 +808,11 @@ function AttendanceForm(){
 
                                             ?
 
-                                            "rounded bg-green-600 px-4 py-2 text-white"
+                                            "rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all"
 
                                             :
 
-                                            "rounded border px-4 py-2"
+                                            "rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 transition-all"
 
                                         }
 
@@ -838,11 +847,11 @@ function AttendanceForm(){
 
                                             ?
 
-                                            "rounded bg-red-600 px-4 py-2 text-white"
+                                            "rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all"
 
                                             :
 
-                                            "rounded border px-4 py-2"
+                                            "rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800 transition-all"
 
                                         }
 

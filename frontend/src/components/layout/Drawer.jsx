@@ -58,6 +58,18 @@ function Drawer({ open, closeDrawer }) {
         },
 
         {
+            name:"Assignments",
+            icon:FaTasks,
+            path:"/student/assignments",
+        },
+
+        {
+            name:"Timetable",
+            icon:FaCalendarAlt,
+            path:"/student/timetables",
+        },
+
+        {
             name:"Notes",
             icon:FaFileAlt,
             path:"/student/notes",

@@ -191,6 +191,12 @@ const markAttendance = async(req,res)=>{
 
     }catch(error){
 
+        if (error.code === 11000) {
+            return res.status(409).json({
+                success: false,
+                message: "Attendance has already been marked for this class on this date.",
+            });
+        }
 
         return res.status(500).json({
 
