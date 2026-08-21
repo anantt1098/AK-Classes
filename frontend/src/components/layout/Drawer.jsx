@@ -76,6 +76,12 @@ function Drawer({ open, closeDrawer }) {
         },
 
         {
+            name:"DPP",
+            icon:FaClipboardList,
+            path:"/student/dpp",
+        },
+
+        {
             name:"Videos",
             icon:FaVideo,
             path:"/student/videos",
@@ -97,6 +103,12 @@ function Drawer({ open, closeDrawer }) {
             name:"Reports",
             icon:FaFileAlt,
             path:"/student/reports",
+        },
+
+        {
+            name:"Notices",
+            icon:FaBullhorn,
+            path:"/student/notices",
         },
 
         {
@@ -166,6 +178,12 @@ function Drawer({ open, closeDrawer }) {
             name:"Notes",
             icon:FaStickyNote,
             path:"/teacher/notes",
+        },
+
+        {
+            name:"DPP",
+            icon:FaClipboardList,
+            path:"/teacher/dpp",
         },
 
         {

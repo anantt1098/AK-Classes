@@ -15,6 +15,7 @@ import {
     FaFileAlt,
     FaTasks,
     FaCalendarAlt,
+    FaBullhorn,
 } from "react-icons/fa";
 
 
@@ -316,11 +317,27 @@ function Dashboard(){
                 />
 
                 <StatCard
+                    title="DPP"
+                    value={loading ? "..." : dashboard?.dpps?.length || 0}
+                    icon={FaClipboardList}
+                    color="bg-teal-500"
+                    path="/student/dpp"
+                />
+
+                <StatCard
                     title="Attendance"
                     value={loading ? "..." : `${attendancePercentage}%`}
                     icon={FaClipboardCheck}
                     color="bg-green-500"
                     path="/student/attendance"
+                />
+
+                <StatCard
+                    title="Notices"
+                    value={loading ? "..." : dashboard?.notices?.length ?? "View"}
+                    icon={FaBullhorn}
+                    color="bg-amber-500"
+                    path="/student/notices"
                 />
 
                 <StatCard

@@ -68,6 +68,7 @@ import TeacherCourses from "../pages/teacher/Courses";
 import TeacherVideos from "../pages/teacher/Videos";
 import TeacherNotes from "../pages/teacher/Notes";
 import TeacherLiveClasses from "../pages/teacher/LiveClasses";
+import TeacherDPP from "../pages/teacher/DPP";
 
 // ============================
 // Student Pages
@@ -84,6 +85,8 @@ import Courses from "../pages/student/Courses";
 import StudentLiveClasses from "../pages/student/LiveClasses";
 import StudentAssignments from "../pages/student/Assignments";
 import StudentTimetables from "../pages/student/Timetables";
+import StudentNotices from "../pages/student/Notices";
+import StudentDPP from "../pages/student/DPP";
 
 
 
@@ -434,6 +437,12 @@ function AppRoutes() {
                     path="/teacher/live-classes"
                     element={<TeacherLiveClasses />}
                 />
+
+                {/* DPP */}
+                <Route
+                    path="/teacher/dpp"
+                    element={<TeacherDPP />}
+                />
             </Route>
 
             {/* ============================
@@ -509,6 +518,16 @@ function AppRoutes() {
                 <Route
                     path="/student/timetable"
                     element={<StudentTimetables />}
+                />
+
+                <Route
+                    path="/student/notices"
+                    element={<StudentNotices />}
+                />
+
+                <Route
+                    path="/student/dpp"
+                    element={<StudentDPP />}
                 />
 
 

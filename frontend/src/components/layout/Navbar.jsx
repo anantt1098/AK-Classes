@@ -5,6 +5,7 @@ import {
     FaUserCircle,
     FaAndroid,
     FaDownload,
+    FaClipboardList,
 } from "react-icons/fa";
 
 
@@ -378,142 +379,34 @@ function Navbar({
 
 
 
-                    {/* Profile */}
-
-
-                    <div
-
+                    {/* Open DPP Button */}
+                    <Link
+                        to={user?.role === "teacher" ? "/teacher/dpp" : "/student/dpp"}
+                        title="Open DPP"
                         className="
                             flex
+                            h-11
                             items-center
                             gap-2
-
-                            rounded-2xl
-
-                            border
-                            border-slate-200
-
-                            bg-slate-50
-
-                            px-2
+                            rounded-xl
+                            bg-emerald-600
+                            px-3.5
                             py-2
-
-                            shadow-sm
-
-                            dark:border-slate-700
-
-                            dark:bg-slate-800
+                            text-xs
+                            font-bold
+                            text-white
+                            shadow-md
+                            transition-all
+                            hover:bg-emerald-700
+                            hover:scale-105
+                            active:scale-95
+                            sm:px-4
+                            sm:text-sm
                         "
-
                     >
-
-
-
-                        <div
-
-                            className="
-                                flex
-                                h-10
-                                w-10
-
-                                items-center
-                                justify-center
-
-                                rounded-full
-
-                                bg-blue-100
-
-                                dark:bg-blue-900/40
-                            "
-
-                        >
-
-                            <FaUserCircle
-
-                                className="
-                                    text-3xl
-                                    text-blue-600
-
-                                    dark:text-blue-400
-                                "
-
-                            />
-
-                        </div>
-
-
-
-
-
-
-
-                        <div
-
-                            className="
-                                hidden
-                                sm:block
-                            "
-
-                        >
-
-                            <h3
-
-                                className="
-                                    text-sm
-                                    font-semibold
-
-                                    text-slate-900
-
-                                    dark:text-white
-                                "
-
-                            >
-
-                                {
-                                    user?.username || "User"
-                                }
-
-                            </h3>
-
-
-
-                            <span
-
-                                className="
-                                    rounded-full
-
-                                    bg-blue-100
-
-                                    px-2
-                                    py-0.5
-
-                                    text-xs
-
-                                    font-medium
-
-                                    capitalize
-
-                                    text-blue-700
-
-                                    dark:bg-blue-900/40
-
-                                    dark:text-blue-300
-                                "
-
-                            >
-
-                                {
-                                    user?.role || "user"
-                                }
-
-                            </span>
-
-
-                        </div>
-
-
-
-                    </div>
+                        <FaClipboardList className="text-base sm:text-lg" />
+                        <span>DPP</span>
+                    </Link>
 
 
 

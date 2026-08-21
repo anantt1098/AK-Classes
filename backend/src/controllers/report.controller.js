@@ -94,7 +94,7 @@ const getAllReports = async (req, res) => {
                     select: "username email",
                 },
             })
-            .populate("test", "title subject")
+            .populate("test", "title subject studentClass stream")
             .populate("uploadedBy", "username")
             .sort({ createdAt: -1 });
 

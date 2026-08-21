@@ -12,6 +12,7 @@ const Notice = require("../models/notice.model");
 const Timetable = require("../models/timetable.model");
 const Attendance = require("../models/attendance.model");
 const LiveClass = require("../models/liveClass.model");
+const DPP = require("../models/dpp.model");
 
 
 
@@ -246,6 +247,7 @@ async function getStudentDashboard(req,res){
             assignments,
             tests,
             liveClasses,
+            dpps,
         ] = await Promise.all([
             Course.find(academicFilter),
             Note.find(academicFilter),
@@ -253,6 +255,7 @@ async function getStudentDashboard(req,res){
             Assignment.find(academicFilter),
             Test.find(academicFilter),
             LiveClass.find(liveClassFilter),
+            DPP.find(academicFilter),
         ]);
 
         const noticeOrConditions = [
@@ -381,6 +384,7 @@ async function getStudentDashboard(req,res){
             assignments,
             tests,
             liveClasses,
+            dpps,
             notices,
             timetable,
             attendance,

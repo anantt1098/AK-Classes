@@ -16,6 +16,7 @@ const noticeRoutes = require("./routes/notice.routes");
 const timetableRoutes = require("./routes/timetable.routes");
 const assignmentRoutes = require("./routes/assignment.routes");
 const liveClassRoutes = require("./routes/liveClass.routes");
+const dppRoutes = require("./routes/dpp.routes");
 
 const app = express();
 
@@ -79,6 +80,8 @@ app.use("/api/notices", noticeRoutes);
 app.use("/api/timetables", timetableRoutes);
 app.use("/api/assignments", assignmentRoutes);
 app.use("/api/live-classes", liveClassRoutes);
+app.use("/api/dpp", dppRoutes);
+app.use("/api/dpps", dppRoutes);
 
 const fs = require("fs");
 const path = require("path");

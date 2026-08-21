@@ -330,13 +330,28 @@ const getStudentNotices = async (req, res) => {
             });
         }
 
-        const notices = await Notice.find({
+        const filter = {
             isActive: true,
             $or: [
                 { studentClass: "All" },
                 { studentClass: student.studentClass },
             ],
-        })
+        };
+
+        if (student.stream && (student.studentClass === "11" || student.studentClass === "12")) {
+            filter.$and = [
+                {
+                    $or: [
+                        { stream: student.stream },
+                        { stream: "" },
+                        { stream: "All" },
+                        { stream: { $exists: false } },
+                    ],
+                },
+            ];
+        }
+
+        const notices = await Notice.find(filter)
             .populate("publishedBy", "username email")
             .sort({ createdAt: -1 });
 
