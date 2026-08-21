@@ -6,6 +6,7 @@ import { getMyReports } from "../../services/report.service";
 import StatCard from "../../components/dashboard/StatCard";
 import Table from "../../components/common/Table";
 import Loader from "../../components/common/Loader";
+import PageHeader from "../../components/dashboard/PageHeader";
 
 function Reports() {
     const [reports, setReports] = useState([]);
@@ -90,12 +91,10 @@ function Reports() {
 
     return (
         <div className="space-y-8">
-            <div>
-                <h1 className="text-3xl font-bold">Academic Reports</h1>
-                <p className="mt-2 text-slate-500">
-                    Track your test performance and report cards uploaded by your teachers.
-                </p>
-            </div>
+            <PageHeader
+                title="Academic Reports"
+                subtitle="Track your test performance and report cards uploaded by your teachers."
+            />
 
             <div className="grid gap-5 md:grid-cols-2">
                 <StatCard

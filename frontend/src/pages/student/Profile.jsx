@@ -14,6 +14,7 @@ import {
 
 import { getMyProfile } from "../../services/student.service";
 import Loader from "../../components/common/Loader";
+import PageHeader from "../../components/dashboard/PageHeader";
 
 function Profile() {
     const [profile, setProfile] = useState(null);
@@ -51,6 +52,11 @@ function Profile() {
 
     return (
         <div className="space-y-8">
+            <PageHeader
+                title="My Profile"
+                subtitle="View your student profile and academic details."
+            />
+
             {/* Header Banner */}
             <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 p-6 text-white shadow-lg sm:p-8">
                 <div className="flex flex-col items-center gap-6 sm:flex-row">

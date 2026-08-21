@@ -6,10 +6,11 @@ import {
     FaAndroid,
     FaDownload,
     FaClipboardList,
+    FaArrowLeft,
 } from "react-icons/fa";
 
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Capacitor } from "@capacitor/core";
 import logo from "../../assets/logo.jpg";
 
@@ -21,14 +22,9 @@ function Navbar({
     toggleTheme,
     user,
 }) {
-
-
-    const dashboardTitle =
-        user?.role === "teacher"
-        ?
-        "Teacher Dashboard"
-        :
-        "Student Dashboard";
+    const navigate = useNavigate();
+    const location = useLocation();
+    const isDashboard = location.pathname.endsWith("/dashboard");
 
 
 
@@ -134,6 +130,40 @@ function Navbar({
 
                     </button>
 
+                    {/* Back Button */}
+                    {!isDashboard && (
+                        <button
+                            onClick={() => navigate(-1)}
+                            title="Go Back"
+                            className="
+                                flex
+                                h-11
+                                items-center
+                                gap-1.5
+                                rounded-xl
+                                border
+                                border-slate-200
+                                bg-slate-50
+                                px-3
+                                text-xs
+                                font-bold
+                                text-slate-700
+                                shadow-sm
+                                transition-all
+                                hover:bg-slate-100
+                                hover:scale-105
+                                active:scale-95
+                                dark:border-slate-700
+                                dark:bg-slate-800
+                                dark:text-slate-200
+                                dark:hover:bg-slate-700
+                            "
+                        >
+                            <FaArrowLeft size={14} />
+                            <span className="hidden sm:inline">Back</span>
+                        </button>
+                    )}
+
 
 
 
@@ -183,6 +213,9 @@ function Navbar({
                         <span
 
                             className="
+                                hidden
+                                sm:inline
+
                                 text-lg
                                 font-bold
 
@@ -209,55 +242,7 @@ function Navbar({
 
 
 
-                    {/* Dashboard title */}
-
-                    <div className="hidden md:block min-w-0">
-
-
-                        <h1
-
-                            className="
-                                truncate
-
-                                text-base
-
-                                font-bold
-
-                                sm:text-xl
-
-                                text-slate-900
-
-                                dark:text-white
-                            "
-
-                        >
-
-                            {dashboardTitle}
-
-                        </h1>
-
-
-
-                        <p
-
-                            className="
-                                mt-1
-
-                                text-xs
-
-                                text-slate-500
-
-                                dark:text-slate-400
-                            "
-
-                        >
-
-                            Welcome back 👋
-
-                        </p>
-
-
-                    </div>
+                    {/* Logo */}
 
 
 
@@ -389,7 +374,9 @@ function Navbar({
                             items-center
                             gap-2
                             rounded-xl
-                            bg-emerald-600
+                            bg-gradient-to-r
+                            from-blue-600
+                            to-indigo-600
                             px-3.5
                             py-2
                             text-xs
@@ -397,8 +384,10 @@ function Navbar({
                             text-white
                             shadow-md
                             transition-all
-                            hover:bg-emerald-700
+                            hover:from-blue-700
+                            hover:to-indigo-700
                             hover:scale-105
+                            hover:shadow-blue-500/25
                             active:scale-95
                             sm:px-4
                             sm:text-sm

@@ -4,6 +4,7 @@ import { FaPodcast, FaExternalLinkAlt, FaVideo } from "react-icons/fa";
 
 import { getStudentLiveClasses } from "../../services/liveClass.service";
 import Loader from "../../components/common/Loader";
+import PageHeader from "../../components/dashboard/PageHeader";
 
 function getEmbedUrl(url) {
     if (!url) return null;
@@ -42,15 +43,10 @@ function StudentLiveClasses() {
 
     return (
         <div className="space-y-8">
-            {/* Header */}
-            <div>
-                <h1 className="text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-                    <FaPodcast className="text-red-600 animate-pulse" /> Live Classes
-                </h1>
-                <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-                    Watch real-time live lectures and interactive sessions hosted by your teachers.
-                </p>
-            </div>
+            <PageHeader
+                title="Live Classes"
+                subtitle="Watch real-time live lectures and interactive sessions hosted by your teachers."
+            />
 
             {/* Live Classes Grid */}
             {loading ? (

@@ -16,6 +16,8 @@ import {
 
 
 
+import PageHeader from "../../components/dashboard/PageHeader";
+
 function Courses() {
 
 
@@ -51,17 +53,10 @@ function Courses() {
         <div className="space-y-6">
 
 
-            <div>
-
-                <h1 className="text-3xl font-bold">
-                    Courses
-                </h1>
-
-                <p className="text-slate-500 mt-2">
-                    Access your available courses.
-                </p>
-
-            </div>
+            <PageHeader
+                title="Courses"
+                subtitle="Access your available courses."
+            />
 
 
 

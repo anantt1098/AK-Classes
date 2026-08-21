@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import Loader from "../../components/common/Loader";
+import PageHeader from "../../components/dashboard/PageHeader";
 import { FaCalendarAlt, FaClock, FaUser, FaDoorOpen } from "react-icons/fa";
 import { getStudentTimetables } from "../../services/timetable.service";
 
@@ -33,12 +35,10 @@ function Timetables() {
 
     return (
         <div className="space-y-8">
-            <div>
-                <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Class Timetable</h1>
-                <p className="mt-2 text-slate-500 dark:text-slate-400">
-                    View your weekly class schedule and lecture timings.
-                </p>
-            </div>
+            <PageHeader
+                title="Class Timetable"
+                subtitle="View your weekly class schedule and lecture timings."
+            />
 
             {/* Day Tabs */}
             <div className="flex overflow-x-auto gap-2 border-b border-slate-200 pb-3 dark:border-slate-800 scrollbar-none">

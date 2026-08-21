@@ -17,6 +17,8 @@ import {
 
 
 
+import PageHeader from "../../components/dashboard/PageHeader";
+
 function Notes() {
 
 
@@ -59,19 +61,10 @@ function Notes() {
 
 
 
-            <div>
-
-                <h1 className="text-3xl font-bold">
-                    Notes
-                </h1>
-
-
-                <p className="text-slate-500 mt-2">
-                    Access your class and subject wise notes.
-                </p>
-
-
-            </div>
+            <PageHeader
+                title="Notes"
+                subtitle="Access your class and subject wise notes."
+            />
 
 
 

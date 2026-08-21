@@ -4,6 +4,7 @@ import { FaPlayCircle, FaVideo, FaBook } from "react-icons/fa";
 
 import { getStudentVideos } from "../../services/video.service";
 import Loader from "../../components/common/Loader";
+import PageHeader from "../../components/dashboard/PageHeader";
 
 function getEmbedUrl(url) {
     if (!url) return null;
@@ -44,12 +45,10 @@ function Videos() {
 
     return (
         <div className="space-y-8">
-            <div>
-                <h1 className="text-3xl font-bold">Video Lectures</h1>
-                <p className="mt-2 text-slate-500">
-                    Watch video lectures uploaded by your teachers for your class and subjects.
-                </p>
-            </div>
+            <PageHeader
+                title="Video Lectures"
+                subtitle="Watch video lectures uploaded by your teachers for your class and subjects."
+            />
 
             {videos.length === 0 ? (
                 <div className="rounded-2xl border border-slate-200 bg-white p-12 text-center shadow-sm dark:border-slate-800 dark:bg-slate-900">

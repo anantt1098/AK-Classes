@@ -7,6 +7,7 @@ import {
 } from "react-icons/fa";
 
 import { getMyFee } from "../../services/fee.service";
+import PageHeader from "../../components/dashboard/PageHeader";
 import StatCard from "../../components/dashboard/StatCard";
 import StatusBadge from "../../components/common/StatusBadge";
 import Loader from "../../components/common/Loader";
@@ -54,10 +55,10 @@ function Fees() {
 
     return (
         <div className="space-y-8">
-            <div>
-                <h1 className="text-3xl font-bold">Fee Status</h1>
-                <p className="mt-2 text-slate-500">View your fee breakdown and payment details.</p>
-            </div>
+            <PageHeader
+                title="Fee Status"
+                subtitle="View your fee breakdown and payment details."
+            />
 
             <div className="grid gap-5 md:grid-cols-3">
                 <StatCard

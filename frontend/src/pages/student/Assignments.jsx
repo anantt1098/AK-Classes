@@ -3,6 +3,8 @@ import toast from "react-hot-toast";
 import { FaTasks, FaExternalLinkAlt, FaCalendarAlt, FaUser, FaSearch } from "react-icons/fa";
 import { getStudentAssignments } from "../../services/assignment.service";
 
+import PageHeader from "../../components/dashboard/PageHeader";
+
 function Assignments() {
     const [assignments, setAssignments] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -48,12 +50,10 @@ function Assignments() {
 
     return (
         <div className="space-y-8">
-            <div>
-                <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Assignments</h1>
-                <p className="mt-2 text-slate-500 dark:text-slate-400">
-                    View and access all assignments for your class and subjects.
-                </p>
-            </div>
+            <PageHeader
+                title="Assignments"
+                subtitle="View and access all assignments for your class and subjects."
+            />
 
             {/* Filters & Search */}
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">

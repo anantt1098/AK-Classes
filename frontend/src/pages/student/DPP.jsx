@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 
 import { getStudentDPPs } from "../../services/dpp.service";
+import PageHeader from "../../components/dashboard/PageHeader";
 
 function StudentDPP() {
     const [dpps, setDpps] = useState([]);
@@ -41,29 +42,22 @@ function StudentDPP() {
 
     return (
         <div className="space-y-6">
-            {/* Header Section */}
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                    <h1 className="text-3xl font-bold text-slate-900 dark:text-white">
-                        Daily Practice Problems (DPP)
-                    </h1>
-                    <p className="mt-1 text-slate-500 dark:text-slate-400">
-                        Access your class and subject wise daily practice sheets.
-                    </p>
-                </div>
-
-                {/* Search Bar */}
-                <div className="relative min-w-[240px] sm:w-72">
-                    <FaSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
-                    <input
-                        type="text"
-                        placeholder="Search DPP or subject..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-10 pr-4 text-sm font-medium text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-slate-800 dark:bg-slate-900 dark:text-white dark:placeholder:text-slate-500"
-                    />
-                </div>
-            </div>
+            <PageHeader
+                title="Daily Practice Problems (DPP)"
+                subtitle="Access your class and subject wise daily practice sheets."
+                action={
+                    <div className="relative min-w-[240px] sm:w-72">
+                        <FaSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+                        <input
+                            type="text"
+                            placeholder="Search DPP or subject..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-10 pr-4 text-sm font-medium text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-slate-800 dark:bg-slate-900 dark:text-white dark:placeholder:text-slate-500"
+                        />
+                    </div>
+                }
+            />
 
             {/* Content Area */}
             {loading ? (
